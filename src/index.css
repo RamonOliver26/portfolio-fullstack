@@ -4,8 +4,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #f9f9f9;
+  --text: #111;
+  --card: #fff;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --card: #020617;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f9f9f9;
-  color: #111;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }

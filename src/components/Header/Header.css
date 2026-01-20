@@ -21,3 +21,19 @@
   color: #111;
   font-weight: 500;
 }
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.hero-buttons a {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.hero-buttons .outline {
+  background: transparent;
+  border: 2px solid var(--text);
+  color: var(--text);
+}
