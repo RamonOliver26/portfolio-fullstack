@@ -2,20 +2,38 @@ import { motion } from "framer-motion";
 import "./Projects.css";
 import { projects } from "../../data/projects";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export function Projects() {
   return (
     <section className="projects" id="projects">
       <h2>Projetos</h2>
 
-      <div className="projects-grid">
+      <motion.div
+        className="projects-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {projects.map((project, index) => (
           <motion.div
-            key={project.id}
+            key={index}
             className="project-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            viewport={{ once: true }}
+            variants={cardVariants}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             whileHover={{ scale: 1.03 }}
           >
             <h3>{project.title}</h3>
@@ -28,16 +46,21 @@ export function Projects() {
             </ul>
 
             <div className="project-links">
-              <a href={project.github} target="_blank">
+              <a href={project.github} target="_blank" rel="noreferrer">
                 GitHub
               </a>
-              <a href={project.demo} target="_blank" className="outline">
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="outline"
+              >
                 Demo
               </a>
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

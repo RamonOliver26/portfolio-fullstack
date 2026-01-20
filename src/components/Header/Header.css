@@ -6,19 +6,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(249, 249, 249, 0.9);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   z-index: 100;
+}
+.header strong {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .header nav {
   display: flex;
   gap: 20px;
 }
+.header a,
+.theme-btn {
+  color: var(--text);
+}
 
 .header a {
   text-decoration: none;
-  color: #111;
+
   font-weight: 500;
 }
 .theme-btn {

@@ -7,13 +7,19 @@
 :root {
   --bg: #f9f9f9;
   --text: #111;
-  --card: #fff;
+  --card: #ffffff;
+  --card-border: #e5e7eb;
+  --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --header-bg: rgba(249, 249, 249, 0.9);
 }
 
 [data-theme="dark"] {
   --bg: #0f172a;
   --text: #e5e7eb;
   --card: #020617;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(2, 6, 23, 0.9);
 }
 
 body {
