@@ -1,59 +1,37 @@
-import { motion } from "framer-motion";
 import "./Hero.css";
 import { ParticlesBackground } from "../../components/ParticlesBackground";
-
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
+import { useMagnetic } from "../../hooks/useMagnetic";
 
 export function Hero() {
+  const primaryBtn = useMagnetic(0.25);
+  const secondaryBtn = useMagnetic(0.2);
+
   return (
-    <motion.section
+    <section
       className="hero"
-      variants={container}
-      initial="hidden"
-      animate="visible"
       style={{ position: "relative", overflow: "hidden" }}
     >
       <ParticlesBackground />
-      <motion.h1 variants={item} style={{ position: "relative", zIndex: 1 }}>
-        Olá, eu sou <span>Ramon Pereira</span>
-      </motion.h1>
 
-      <motion.p variants={item} style={{ position: "relative", zIndex: 1 }}>
-        Desenvolvedor Full Stack Jr/Pleno focado em criar soluções modernas,
-        performáticas e escaláveis.
-      </motion.p>
+      <div className="hero-content">
+        <h1>
+          Olá, eu sou <span className="glow-name">Ramon Pereira</span>
+        </h1>
 
-      <motion.div
-        className="hero-buttons"
-        variants={item}
-        initial="hidden"
-        animate="visible"
-        transition={{ type: "spring", stiffness: 100, damping: 12 }}
-      >
-        <a href="#projects">Ver Projetos</a>
-        <a href="#contact" className="outline">
-          Contato
-        </a>
-      </motion.div>
-    </motion.section>
+        <p>
+          Desenvolvedor Full Stack Jr/Pleno focado em criar soluções modernas,
+          performáticas e escaláveis.
+        </p>
+
+        <div className="hero-buttons">
+          <a href="#projects" ref={primaryBtn}>
+            Ver Projetos
+          </a>
+          <a href="#contact" className="outline" ref={secondaryBtn}>
+            Contato
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }

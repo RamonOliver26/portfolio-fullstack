@@ -19,7 +19,14 @@ const cardVariants = {
 export function Projects() {
   return (
     <section className="projects" id="projects">
-      <h2>Projetos</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        Projetos
+      </motion.h2>
 
       <motion.div
         className="projects-grid"

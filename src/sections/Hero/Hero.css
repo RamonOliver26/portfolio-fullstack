@@ -5,48 +5,34 @@
   align-items: flex-start;
   min-height: 100vh;
   padding: 0 10%;
+  position: relative;
+  z-index: 1;
 }
 
+/* ---------- TÍTULO ---------- */
 .hero h1 {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 20px;
 }
+
 .hero h1 span {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0 6px;
-  border-radius: 4px;
-  position: relative;
-  z-index: 1;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-  }
-}
-.hero h1 span:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* glow mais intenso ao hover */
 }
 
-.hero h2 {
-  font-size: 1.8rem;
-  color: #666;
-  margin-top: 10px;
+/* ---------- TEXTO ---------- */
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 30px;
+  max-width: 600px;
 }
 
+/* ---------- BOTÕES ---------- */
 .hero-buttons {
   margin-top: 30px;
   display: flex;
@@ -55,27 +41,110 @@
 
 .hero-buttons a {
   padding: 12px 24px;
-  background: #000;
-  color: #fff;
+  background: var(--text);
+  color: var(--bg);
   text-decoration: none;
   border-radius: 6px;
   font-weight: 500;
   display: inline-block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease,
+    color 0.3s ease;
 }
+
 .hero-buttons a:hover {
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
+/* Outline */
 .hero-buttons .outline {
   background: transparent;
-  border: 2px solid #000;
-  color: #000;
+  border: 2px solid var(--text);
+  color: var(--text);
 }
+
 .hero-buttons .outline:hover {
-  background: #000;
-  color: #fff;
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ---------- GLOW DO NOME ---------- */
+.glow-name {
+  pointer-events: auto;
+  display: inline-block;
+  transition: transform 0.25s ease, text-shadow 0.3s ease, color 0.3s ease;
+}
+.glow-name:hover {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Light mode glow */
+[data-theme="light"] .glow-name {
+  animation: glowPulseLight 3s ease-in-out infinite;
+}
+
+@keyframes glowPulseLight {
+  0% {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.15), 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.35), 0 0 16px rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.15), 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Dark mode glow */
+[data-theme="dark"] .glow-name {
+  animation: glowPulseDark 3s ease-in-out infinite;
+}
+
+@keyframes glowPulseDark {
+  0% {
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
+      0 0 14px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.55),
+      0 0 36px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
+      0 0 14px rgba(255, 255, 255, 0.15);
+  }
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.15)
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark mode */
+[data-theme="dark"] .hero::before {
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.6)
+  );
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--bg));
+  z-index: 1;
+  pointer-events: none;
 }

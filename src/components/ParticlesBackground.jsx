@@ -19,6 +19,7 @@ export function ParticlesBackground() {
         width: "100%",
         height: "100%",
         zIndex: 0,
+        pointerEvents: "none",
       }}
     >
       <Particles
@@ -30,10 +31,8 @@ export function ParticlesBackground() {
           fpsLimit: 60,
           interactivity: {
             events: {
-              onHover: { enable: true, mode: "repulse" },
               resize: true,
             },
-            modes: { repulse: { distance: 100, duration: 0.4 } },
           },
           particles: {
             color: { value: "#ffffff" },
