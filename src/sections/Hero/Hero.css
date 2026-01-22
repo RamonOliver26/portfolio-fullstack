@@ -1,13 +1,39 @@
 .hero {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
   padding: 0 10%;
 }
 
 .hero h1 {
   font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.hero h1 span {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0 6px;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+}
+.hero h1 span:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* glow mais intenso ao hover */
 }
 
 .hero h2 {
@@ -17,9 +43,8 @@
 }
 
 .hero p {
-  max-width: 600px;
-  margin-top: 20px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
 .hero-buttons {
@@ -34,6 +59,13 @@
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
+  font-weight: 500;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.hero-buttons a:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .hero-buttons .outline {
@@ -41,6 +73,9 @@
   border: 2px solid #000;
   color: #000;
 }
-.hero {
-  padding-top: 100px;
+.hero-buttons .outline:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }

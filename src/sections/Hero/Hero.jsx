@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import "./Hero.css";
+import { ParticlesBackground } from "../../components/ParticlesBackground";
 
 const container = {
   hidden: {},
@@ -29,17 +30,25 @@ export function Hero() {
       variants={container}
       initial="hidden"
       animate="visible"
+      style={{ position: "relative", overflow: "hidden" }}
     >
-      <motion.h1 variants={item}>
+      <ParticlesBackground />
+      <motion.h1 variants={item} style={{ position: "relative", zIndex: 1 }}>
         Olá, eu sou <span>Ramon Pereira</span>
       </motion.h1>
 
-      <motion.p variants={item}>
+      <motion.p variants={item} style={{ position: "relative", zIndex: 1 }}>
         Desenvolvedor Full Stack Jr/Pleno focado em criar soluções modernas,
         performáticas e escaláveis.
       </motion.p>
 
-      <motion.div className="hero-buttons" variants={item}>
+      <motion.div
+        className="hero-buttons"
+        variants={item}
+        initial="hidden"
+        animate="visible"
+        transition={{ type: "spring", stiffness: 100, damping: 12 }}
+      >
         <a href="#projects">Ver Projetos</a>
         <a href="#contact" className="outline">
           Contato

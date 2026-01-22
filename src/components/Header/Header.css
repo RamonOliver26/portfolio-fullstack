@@ -8,7 +8,33 @@
   align-items: center;
   background: var(--header-bg);
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
   z-index: 100;
+}
+.header nav a {
+  position: relative;
+  cursor: pointer;
+}
+
+.header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--text);
+  transition: width 0.3s ease, opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.header nav a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+.header.scrolled {
+  padding: 14px 10%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 .header strong {
   color: var(--text);
@@ -34,6 +60,10 @@
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.theme-btn:hover {
+  transform: rotate(10deg) scale(1.1);
 }
 .hero-buttons a {
   background: var(--text);
@@ -44,4 +74,13 @@
   background: transparent;
   border: 2px solid var(--text);
   color: var(--text);
+}
+.header strong,
+.header a,
+.theme-btn {
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .header.scrolled {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
